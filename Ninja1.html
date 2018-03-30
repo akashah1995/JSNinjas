@@ -1,0 +1,66 @@
+<html>
+    
+    <body>
+        <script>
+            function Ninja(name){
+                this.name = name;
+                var speed = 3;
+                var strength = 3;
+                this.health = 100;
+
+                this.stats = function(){
+                    console.log("Name:" + this.name);
+                    console.log("Health:" + this.health);
+                    console.log("Strength:" + strength);
+                    console.log("Speed:" + speed);
+                    
+                }
+
+                this.kick = function(otherNinja){
+                    if (otherNinja.constructor == Ninja){
+                        otherNinja.health = otherNinja.health - (strength * 15);
+                        return this;
+                    }
+
+                    return this;
+                    
+                }
+            }
+
+            Ninja.prototype.sayName = function(){
+                console.log(this.name + "!");
+                return this;
+            }
+
+            Ninja.prototype.drinkSake = function(){
+                this.health = this.health + 10;
+                return this;
+            }
+
+            var ninja1 = new Ninja("Akash");
+            ninja1.stats();
+            ninja1.drinkSake();
+            ninja1.sayName();
+            ninja1.stats();
+            var ninja2 = new Ninja("Alec");
+
+            Ninja.prototype.punch = function(otherNinja){
+                if (otherNinja.constructor == Ninja){
+                    otherNinja.health = otherNinja.health - 5;
+                    return this;
+                }
+                
+            }
+
+            ninja1.punch(ninja2);
+            ninja1.kick(ninja2);
+            ninja2.stats();
+
+
+
+
+
+
+        </script>
+    </body>
+</html>
